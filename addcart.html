@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            border: 1px solid black ;
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #container{
+        border: 1px solid black;
+        width: 70vw;
+        height: 100%; 
+        flex-wrap:wrap;
+       
+    }
+    
+    .summary{
+        border: 1px solid black;
+        width: 25vw;
+        height: 45%;
+        
+    }
+   
+    .card{
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        border: 1px solid black;
+        width: 100%;
+        border-radius: 20px;
+        align-items: center;
+    }
+.card .div{
+    border-radius: 0 0 20px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    height:50%;
+    text-align: center;
+    
+}
+.card .div .bt{
+    border: none;
+    color: aliceblue;
+    background-color: orange;
+    margin-top: 29px;
+    border-radius:0 0 20px 20px;
+    width: 100%;
+    height: 30px;
+}
+.quantity{
+border: 1px solid black;
+    width: 40%;
+    height:10%;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.quantity button{
+    height: 20px;
+    width: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="container"></div>
+        <div class="summary">
+            <h1 style="text-align: center;">Summary</h1>
+                <div style="display: flex;justify-content:space-evenly ;"><h3>estimated amount:</h3><h3 id="esamount">0</h3>
+            </div>
+            <div style="display: flex;justify-content:space-evenly ;"><h3>Discount:</h3><h3 id="damount">0</h3></div>
+            <div style="display: flex;justify-content:space-evenly ;"><h3>Delevery charge:</h3><h3 id="delivery">0</h3></div>
+            <div style="display: flex;justify-content:space-evenly ;"><h3>GST:</h3><h3 id="gst">0</h3></div>
+            <div style="display: flex;justify-content:space-evenly ;"><h3>Final price:</h3><h3 id="famount">0</h3></div>
+        </div>
+    </div>
+    <script>
+function product(){
+const product=JSON.parse(localStorage.getItem('addtocart'))||[];
+const container=document.getElementById("container");
+container.innerHTML="";
+
+product.forEach(pro => {
+    let card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`    
+    <div class="div">
+    <h1>${pro.name}</h1>
+    <p> ${pro.detail}</p>
+    </div>
+    <div class="quantity">
+   <button class="p" id="bt" onclick="plus(${pro.id})">+</button>
+    <p id="num-${pro.id}">1</p>
+    <button class="m"id="bt" onclick="minus(${pro.id})">-</button>
+    </div>
+    <div class="price">
+        <h2 id="price-${pro.id}">${pro.price}</h2>
+    </div>
+    <button class="bt"id="editbt">delete</button> 
+    `;
+container.appendChild(card);
+});
+}
+
+function plus(id){
+    let cart=JSON.parse(localStorage.getItem('addtocart'))||[];    
+    let find=cart.find(pro => pro.id==id);
+    let p=1;
+    if(find){
+        let displayp=document.querySelector(`#price-${id}`);
+        let ptext=Number(displayp.innerText);
+        let numElement = document.querySelector(`#num-${id}`);
+        let price=Number(find.price);
+        let val = Number(numElement.innerText);
+    if(val>=1){
+        val+=1;
+        p=price*val;
+    }
+    numElement.innerHTML=val;
+    displayp.innerHTML=p;
+}
+let es=document.getElementById('esamount');
+let discount=document.getElementById('damount');
+let delivery=document.getElementById('delivery');
+let gst=document.getElementById('gst');
+let Final=document.getElementById('famount');
+cart.forEach(proo=>{   
+nes+=Number(proo.price);
+})
+es.innerHTML=nes;
+}
+
+
+function minus(id){
+    let cart=JSON.parse(localStorage.getItem('addtocart'))||[];    
+    let find=cart.find(pro => pro.id==id);
+    let p=find.price;
+    if(find){
+        let displayp=document.querySelector(`#price-${id}`);
+        let ptext=Number(displayp.innerText);
+        let price=Number(find.price);
+        let numElement = document.querySelector(`#num-${id}`);
+        let val = Number(numElement.innerText);
+    if(val>1){
+        val-=1;
+        p=price*val;
+    }
+    numElement.innerHTML=val;
+    displayp.innerHTML=p;
+}
+let es=document.getElementById('esamount');
+let discount=document.getElementById('damount');
+let delivery=document.getElementById('delivery');
+let gst=document.getElementById('gst');
+let Final=document.getElementById('famount');
+;
+cart.forEach(proo=>{    
+nes-=Number(proo.price);
+})
+es.innerHTML=nes;
+}
+
+
+product();
+    </script>
+</body>
+</html>

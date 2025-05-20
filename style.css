@@ -1,0 +1,116 @@
+
+
+.mpic{
+    background-image:url(images/scared-cute-teenage-redhead-girl-pulling-sweater-face-peeking-upper-left-corner-with-frightened-eyes-glancing-sideways-watching-horror-movie-alone-orange-background.jpg);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    border:none;
+    width: 100vw;
+    height: 600px;
+    display: flex;
+    align-items: center;
+
+}
+.mpic div{
+    margin:0 0 10px 700px ;
+    width: 40%;
+    height: 40%;
+}
+.mpic button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    height: 50px;
+    width: 120px;
+    border-radius: 50px;
+    border: none;
+}
+.line{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.line .h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    align-items: center;
+}
+.line .l1,.l2{
+    width: 80%;
+    height: 80%;
+   text-align: center;
+}
+.line hr{
+    margin-top: 20px;
+}
+.products{
+    margin-top: 10px;
+    width: 99vw;
+    height: 600px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.products div{  
+    height: 100%;
+    width: 100%;
+    
+}
+.products .pr1{
+background-image:url(images/high-fashion-look-young-stylish-confident-happy-handsome-businessman-model-suit-clothes-lifestyle-street-sunglasses.jpg);
+background-size: 100% 100%;
+background-repeat: no-repeat;
+display: flex;
+justify-content: center;
+align-items: center;
+color: aliceblue;
+}
+.products .pr2{
+background-image: url(images/freepik-export-20250110182153y6wa.jpeg);
+background-size:100% 100% ;
+display: flex;
+justify-content: center;
+align-items: center;
+color: aliceblue;
+}
+.products .pr3{
+    background-image:url(images/beautiful-casual-men-fashion-clothes-set.jpg);
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+.products .pr4{
+    background-image:url(images/portrait-cute-little-boy-girl-stylish-jeans-clothes-looking-camera-studio.jpg);
+    background-size:100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(251, 251, 251);
+}
+.products div h2{
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.9); 
+    transition:0.1s; 
+}
+.products div:hover{
+    border-image : fill 0 linear-gradient(rgba(35, 32, 32, 0.067),#282323); 
+    
+}
+.products div:hover h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    visibility: visible;
+    font-size: x-large; 
+    opacity: 1; 
+    transform: scale(1); 
+}
+.info{
+    border: 1px solid black;
+    width: 99vw;
+    height: 600px;
+    margin: 50px 0 0 0;
+}

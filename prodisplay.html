@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+  #container{
+        border: 1px solid black;
+        width: 100vw;
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-evenly;
+    }
+    
+    .card{
+        margin-top: 10px;
+        border: 1px solid black;
+        height: 400px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        border-radius: 20px;
+    }
+.card div{
+    border-radius: 0 0 20px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    height:50%;
+    text-align: center;
+}
+.card div .bt{
+    border: none;
+    color: aliceblue;
+    background-color: orange;
+    margin-top: 7px;
+    border-radius:0 0 20px 20px;
+    width: 100%;
+    height: 30px;
+}
+.card div .bt:hover{
+background-color: darkorange;
+}
+.form{
+    background-color: rgba(0, 0, 0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+       /* pointer-events: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    height: 100vh;
+    width: 100vw;
+}
+.form{
+  display: none;
+}
+/* .form form .show{
+  pointer-events:auto;
+  opacity: 1;
+} */
+form {
+      background: #fff;
+      border: 1px solid #ddd;
+      width: 30%;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+      
+    }
+
+    form div {
+      margin-top: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: large;
+      color: #444;
+    }
+
+    input, textarea {
+      font-size: medium;
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #6a89cc;
+      box-shadow: 0 0 5px rgba(106, 137, 204, 0.5);
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .submit {
+      margin-top: 20px;
+      font-size: medium;
+      background-color: orange;
+      color: #fff;
+      border: none;
+      width: 100%;
+      height: 45px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .submit:hover {
+      background-color: darkorange;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }   
+
+
+</style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="open" class="form">
+        <form action="" id="form">
+          <h3>Edit your product</h3>
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" placeholder="Enter product name" >
+            </div>
+            <div>
+              <label for="price">Price:</label>
+              <input type="number" id="price" placeholder="Enter product price">
+            </div>
+            <div>
+              <label for="description">Description:</label>
+              <textarea id="description" rows="3" placeholder="Enter product description"></textarea>
+            </div>
+            <button class="submit" type="submit" >confirm</button>
+            <button id="closee">close</button>
+          </form>
+    </div>
+<script>
+// function product(){
+// const product=JSON.parse(localStorage.getItem('products'))||[];
+const parm=new URLSearchParams(window.location.search);
+const category=parm.get("category")
+
+fetch(`http://127.0.0.1:8000/prodisplay?category=${category}`)
+ .then(response => response.json())
+ .then(product=>{
+const container=document.getElementById("container");
+container.innerHTML="";
+product.forEach(pro => {
+  let card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`    
+    <div>
+    <h1>${pro.name}</h1>
+    <h2>$${pro.price}</h2>
+    <p> ${pro.description}</p>
+     <button class="delete-btn">add to cart </button>
+    </div>
+    `;
+    container.appendChild(card);
+
+});
+});
+
+ 
+
+
+
+// function deleteProduct(id) {
+//       const products = JSON.parse(localStorage.getItem('products')) || [];
+//       const updatedProducts = products.filter(product => product.id !== id);
+//       console.log(updatedProducts);
+//       localStorage.setItem('products', JSON.stringify(updatedProducts));
+//       alert('Product deleted successfully!');
+//       product();
+//     }
+
+// let selectid=null;
+// function editProduct(id){
+//   selectid=id;
+//   let products=JSON.parse(localStorage.getItem('products'))||[];
+//   let editProduct=products.find(product=> product.id==id);
+//   if(editProduct){
+//     let formcont=document.getElementById('open');
+// formcont.style.display="flex";
+//  const open=document.getElementById('open');
+//  const close=document.getElementById('closee');
+//  open.addEventListener('click',()=>{  
+//    formcont.classList.add('show');
+//  })
+//  close.addEventListener('click',()=>{
+//    formcont.classList.remove('show');
+//  })
+//         document.getElementById("name").value = editProduct.name;
+//         document.getElementById("price").value = editProduct.price;
+//         document.getElementById("description").value = editProduct.detail;
+//   }
+  
+// }
+// document.getElementById('form').addEventListener('submit',function(e){
+//     e.preventDefault();
+//     let pro=JSON.parse(localStorage.getItem('products'))||[];
+//     let updatedProducts = pro.map((product) => {
+//         if (product.id === selectid) {
+//             return {
+//                 ...product,
+//                 name: document.getElementById("name").value,
+//                 price: document.getElementById("price").value,
+//                 detail: document.getElementById("description").value,
+//             };
+//         }
+//         return product;
+//        });
+// localStorage.setItem('products',JSON.stringify(updatedProducts));  
+// document.getElementById('open').style.display = "";
+//     product();
+// })
+
+// function cart(id){
+//   let products=JSON.parse(localStorage.getItem('products'))||[];
+//   let profind=products.find(product=> product.id==id);
+//   if(profind){
+//   let cart=JSON.parse(localStorage.getItem('addtocart'))||[];
+//   let exists = cart.find(item => item.id == id);
+//     if (exists) {
+//       alert("Product is already in the cart!");
+//       return;
+//     }
+//   cart.push(profind);
+//   localStorage.setItem('addtocart',JSON.stringify(cart));
+//   alert("product added succesfully!")
+//   }
+//   product();
+// }
+
+
+
+
+// function editProduct(id) {
+// const formcont=document.getElementById('open');
+// let form=document.getElementById('editbt');
+// formcont.style.display="flex";
+// // const open=document.getElementById('open');
+// // const close=document.getElementById('closee');
+// // open.addEventListener('click',()=>{
+// //   formcont.classList.add('show');
+// // })
+// // close.addEventListener('click',()=>{
+// //   formcont.classList.remove('show');
+// // })
+
+//      const products=JSON.parse(localStorage.getItem('products'))||[];
+//      const productToEdit=products.find(product=> product.id===id);
+//      if(editdata){
+//         const newname=document.getElementById('name');
+//         const newprice=document.getElementById('price');
+//         const newdetail=document.getElementById('description');
+//         const newName = prompt('Enter new name:', productToEdit.name) || productToEdit.name;
+//         const newPrice = prompt('Enter new price:', productToEdit.price) || productToEdit.price;
+//         const newDescription = prompt('Enter new description:', productToEdit.description) || productToEdit.description;
+//         newname.value=editdata.name;
+//         newprice.value=editdata.price;
+//         newdetail.value=editdata.detail;
+//         localStorage.setItem('products',JSON.stringify(products));
+//         alert("product edited successfully");
+//         product();
+//      }
+//     }
+  
+
+
+</script>
+</body>
+</html>

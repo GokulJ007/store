@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="nav"></div>
+    <!-- <nav class="nav">
+        <div class="navd" style="text-align: center;">
+            <h1 style="margin-top:35px;font-style: italic;">style</h1>
+            <div class="loginbt">
+               <a href=""> <button>sign up</button></a>
+               <a href=""><button>login </button></a>
+            </div>  
+        </div>
+        <div class="navd1">
+          <div>
+            <a href="">Home</a>
+            <a href="./product/add.html">add products</a>
+            <a href="">contant us</a>
+            <a href="">about us</a>
+          </div>
+            <div class="log">   
+            <button style="margin:0 30px 0 0;"><a href="./prodisplay.html"style="font-size: large;transform: none;">products</a></button>
+            <button><a href="./addcart.html"><i class="fa-solid fa-cart-shopping"></i></a></button>
+        </div>
+        </div>
+    </nav> -->
+    <div class="mpic">
+        <div>
+            <h1 style="font-size: 4em;font-family:sans-serif;color: aliceblue;font-weight:900 ;">COMFORT AT ITS <br>PEAK...
+                </h1>
+            <button>Shop now</button>    
+        </div>
+    </div>
+    <br><br>
+    <div class="line">
+        <div class="l1"><hr></div>
+    <div class="h1" >
+        <h1>PRODUCT CATOGORIES</h1>
+    </div>
+    <div class="l2"><hr></div>
+</div>
+<div class="products">
+    <a href="prodisplay.html?category=men" style="width:23%;height:100%;text-decoration: none;"> <div class="pr1" ><h2>MENS WARE</h2></div></a>
+    <a href="prodisplay.html?category=women" style="width:23%;height:100% ;text-decoration: none;"> <div class="pr2"><h2>WOMENS WARE</h2></div></a>
+    <a href="prodisplay.html?category=accesories" style="width:23%;height:100% ;text-decoration: none;"><div class="pr3"><h2>ACCESSORIES</h2></div></a>
+    <a href="prodisplay.html?category=kids" style="width:23%;height:100% ;text-decoration: none;"> <div class="pr4"><h2>KIDS</h2></div></a>
+</div>
+<script>
+      
+
+      fetch('navbar.html')
+        .then(Response=>Response.text())
+        .then(navdata=>{
+            document.getElementById('nav').innerHTML=navdata;
+        })
+        .catch(error=>console.log("error"));
+</script>
+</body>
+</html>

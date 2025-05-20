@@ -1,0 +1,108 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+.navbar {
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Logo */
+.nav-logo h1 {
+  font-size: 32px;
+  font-style: italic;
+  color: black;
+}
+
+/* Nav Links */
+.nav-links {
+  margin: 0 250px 0 0;
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #999;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: black;
+}
+
+/* Right Section */
+.nav-right {
+    margin:0 80px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Search Box */
+.nav-search {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 8px 15px;
+  border-radius: 30px;
+  width: 220px;
+}
+
+.nav-search i {
+  margin-right: 10px;
+  color: #666;
+}
+
+.nav-search input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Sign Up Button */
+.icon-button button {
+  height: 40px;
+  padding: 0 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.icon-button button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Cart Icon */
+.icon-button i {
+  font-size: 20px;
+  color: black;
+  transition: 0.3s;
+}
+
+.icon-button i:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      height:70vh;
+      width: 900px;
+      margin:50px 0 0 440px ;
+      background-color: #fff;
+      border-radius: 10px;
+
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-section {
+        border: 1px solid black;
+        width: 50%;
+    }
+
+    .image-section img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .details-section {
+       border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      width: 50%;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px;
+      color: #333;
+    }
+
+    .product-price {
+      font-size: 20px;
+      color: #007BFF;
+      margin: 20px;
+    }
+
+    .sizes {
+      margin: 20px;
+    }
+
+    .sizes span {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin:0 10px 0 0;
+      cursor: pointer;
+    }
+
+    .sizes .selected {
+      background-color: #007BFF;
+      color: #fff;
+      border-color: #007BFF;
+    }
+
+    .add-to-bag {
+        margin-top: 30px;
+      background-color: #000;
+      color: white;
+      width: 400px;
+      padding: 15px 25px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+.fav{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.fav button{
+    width: 190px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white ;
+}
+    .product-description {
+      margin-top: 25px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div id="nav"></div>
+  <div class="container">
+    <div class="image-section">
+      <!-- <img src="https://via.placeholder.com/400x600" alt="Product Image"> -->
+    </div>
+    <div class="details-section">
+      <div class="product-title">Chocolate Cut Out Maxi Dress</div>
+      <div class="product-price">₹2,499</div>
+
+      <div class="sizes">
+        <strong>Select Size:</strong><br><br>
+        <span class="selected">S</span>
+        <span>M</span>
+        <span>L</span>
+        <span>XL</span>
+      </div>
+
+      <button class="add-to-bag">Add to Bag</button><br>
+      <div class="fav">     
+         <button style="border: none;"><i class="fa-regular fa-heart"></i><h3>add to favorites</h3></button>
+      </div>
+      <div class="product-description">
+        <p>Sleeveless high neck slinky maxi dress featuring a cut-out back and ruched bum.</p>
+      </div>
+    </div>
+  </div>
+<script>
+    fetch('navbar.html')
+        .then(Response=>Response.text())
+        .then(navdata=>{
+            document.getElementById('nav').innerHTML=navdata;
+        })
+        .catch(error=>console.log("error"));
+</script>
+</body>
+</html>
