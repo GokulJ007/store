@@ -19,15 +19,16 @@ def demo():
     data=cursor.fetchall()
     return data
  
-@app.get("/prodisplay")
-def prodisplay(category:str = None):
+@app.get("/prodisplay/{category}")
+def prodisplay(category:str):
     connect=DB_connection()
     cursor=connect.cursor()
     if category:
-        cursor.execute("select * from products where category=%s",(category,))
+        query="""select * from products where category=%s"""
+        cursor.execute(query,(category,))
+        data=cursor.fetchall()
     else:
-        cursor.execute("select * from products")
-    data=cursor.fetchall()
+        print("some worng")
     return data
 
 class products(BaseModel):    
