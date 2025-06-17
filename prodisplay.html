@@ -1,183 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    
-  #container{
-        border: 1px solid black;
-        width: 100vw;
-        display: flex;
-        flex-wrap:wrap;
-        justify-content: space-evenly;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products</title>
+  <style>
+    * {
+      box-sizing: border-box;
     }
-    
-    .card{
-        margin-top: 10px;
-        border: 1px solid black;
-        height: 400px;
-        width: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        border-radius: 20px;
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f5f5f5;
     }
-.card div{
-    border-radius: 0 0 20px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    height:50%;
-    text-align: center;
-}
-.card div .bt{
-    border: none;
-    color: aliceblue;
-    background-color: orange;
-    margin-top: 7px;
-    border-radius:0 0 20px 20px;
-    width: 100%;
-    height: 30px;
-}
-.card div .bt:hover{
-background-color: darkorange;
-}
-.form{
-    background-color: rgba(0, 0, 0,0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-       /* pointer-events: none; */
-    position: fixed;
-    top: 0;
-    left: 0;
-    right:0;
-    height: 100vh;
-    width: 100vw;
-}
-.form{
-  display: none;
-}
-/* .form form .show{
-  pointer-events:auto;
-  opacity: 1;
-} */
-form {
+
+    #nav {
+      width: 100%;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      width: 280px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card div {
+      padding: 15px;
+      text-align: center;
+      background-color: #fdfdfd;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .card h1 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      color: green;
+      margin: 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .card button {
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 0 0 20px 20px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: darkorange;
+    }
+
+    /* FORM STYLING */
+    .form {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 999;
+    }
+
+    form {
       background: #fff;
-      border: 1px solid #ddd;
-      width: 30%;
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
-      
+      width: 300px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    form h3 {
+      margin-top: 0;
+      text-align: center;
     }
 
     form div {
-      margin-top: 20px;
-      font-family: Arial, Helvetica, sans-serif;
+      margin-top: 15px;
     }
 
     label {
       display: block;
       margin-bottom: 5px;
-      font-size: large;
-      color: #444;
+      color: #333;
     }
 
     input, textarea {
-      font-size: medium;
+      width: 100%;
       padding: 10px;
-      width: 90%;
+      border-radius: 8px;
       border: 1px solid #ccc;
-      border-radius: 10px;
-      outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #6a89cc;
-      box-shadow: 0 0 5px rgba(106, 137, 204, 0.5);
     }
 
     textarea {
       resize: none;
     }
 
-    .submit {
-      margin-top: 20px;
-      font-size: medium;
-      background-color: orange;
-      color: #fff;
-      border: none;
+    .submit, #closee {
+      margin-top: 15px;
       width: 100%;
-      height: 45px;
-      border-radius: 10px;
+      padding: 10px;
+      border: none;
+      color: white;
+      background-color: orange;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
     }
 
-    .submit:hover {
+    .submit:hover, #closee:hover {
       background-color: darkorange;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }   
-
-
-</style>
+    }
+  </style>
 </head>
 <body>
-    <div id="container"></div>
-    <div id="open" class="form">
-        <form action="" id="form">
-          <h3>Edit your product</h3>
-            <div>
-              <label for="name">Name:</label>
-              <input type="text" id="name" placeholder="Enter product name" >
-            </div>
-            <div>
-              <label for="price">Price:</label>
-              <input type="number" id="price" placeholder="Enter product price">
-            </div>
-            <div>
-              <label for="description">Description:</label>
-              <textarea id="description" rows="3" placeholder="Enter product description"></textarea>
-            </div>
-            <button class="submit" type="submit" >confirm</button>
-            <button id="closee">close</button>
-          </form>
-    </div>
-<script>
-// function product(){
-// const product=JSON.parse(localStorage.getItem('products'))||[];
-const parm=new URLSearchParams(window.location.search);
-const category=parm.get("category")
+  <div id="nav"></div>
+ <div id="container"></div>
+  <!-- Form -->
+  <div id="open" class="form">
+    <form id="form">
+      <h3>Edit your product</h3>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter product name">
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" placeholder="Enter product price">
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" rows="3" placeholder="Enter product description"></textarea>
+      </div>
+      <button class="submit" type="submit">Confirm</button>
+      <button id="closee"   type="button">Close</button>
+    </form>
+  </div>
 
-fetch(`http://127.0.0.1:8000/prodisplay?category=${category}`)
- .then(response => response.json())
- .then(product=>{
-const container=document.getElementById("container");
-container.innerHTML="";
-product.forEach(pro => {
-  let card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`    
-    <div>
-    <h1>${pro.name}</h1>
-    <h2>$${pro.price}</h2>
-    <p> ${pro.description}</p>
-     <button class="delete-btn">add to cart </button>
-    </div>
+  <script>
+    const parm = new URLSearchParams(window.location.search);
+    const category = parm.get("category");
+    const name=parm.get("name");
+
+    let api="http://127.0.0.1:8000/searchapi";
+    let params = [];
+    if (category)params.push(`category=${category}`);
+    if(name) params.push(`name=${name}`);
+    // If there's category or name, use searchapi
+    if(params.length > 0){
+      api+= "?" + params.join("&");
+      fetch(api)
+    .then(Response=>Response.json())
+    .then(product=>renderProducts(product))
+    }else{
+       // fallback if only category (redundant unless you need it separately)
+      fetch(`http://127.0.0.1:8000/prodisplay?category=${category}`)
+      .then(response => response.json())
+      .then(product => renderProducts(product));                        
+    }
+// event.stopPropagation() Stops the button click from hijacking the whole card — no accidental redirects here allowing only the button to function when clicked   
+
+
+function renderProducts(product) {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+  product.forEach(pro => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div onclick="location.href='productdetail.html?id=${pro.id}'">   
+        <h1>${pro.name}</h1>
+        <h2>₹${pro.price}</h2>
+        <p>${pro.description}</p>
+      </div>
     `;
     container.appendChild(card);
-
-});
-});
-
- 
+  });
+}
 
 
+      // async function cart(id){
+      //   try{
+      //     const res=await fetch("http://127.0.0.1:8000/addtocart",{
+      //       method:"POST",
+      //       headers:{"Content-Type":"application/json"},
+      //       body:JSON.stringify({
+      //         product_id:id,
+      //         quantity:1
+      //       })
+      //   });
+      //   const result=await res.json();
+      //   if(res.ok){
+      //     alert(result.message);
+      //   }else{
+      //       alert(`Failed to add to cart: ${result.detail}`);
+      //   }
+      //   }catch(error){
+      //      console.error("Error adding to cart:", error);
+      //      alert("Something went wrong!");
+      //   }
+      // }
+      
 
-// function deleteProduct(id) {
+
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(navdata => {
+        document.getElementById('nav').innerHTML = navdata;
+      })
+      .catch(error => console.log("Navbar load error:", error));
+
+
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!-- // function deleteProduct(id) {
 //       const products = JSON.parse(localStorage.getItem('products')) || [];
 //       const updatedProducts = products.filter(product => product.id !== id);
 //       console.log(updatedProducts);
@@ -276,10 +352,4 @@ product.forEach(pro => {
 //         alert("product edited successfully");
 //         product();
 //      }
-//     }
-  
-
-
-</script>
-</body>
-</html>
+//     } --

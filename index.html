@@ -54,12 +54,12 @@
 <script>
       
 
-      fetch('navbar.html')
-        .then(Response=>Response.text())
-        .then(navdata=>{
-            document.getElementById('nav').innerHTML=navdata;
-        })
-        .catch(error=>console.log("error"));
+    fetch('navbar.html')
+    .then(Response=>Response.text())
+    .then(navdata=>{
+        document.getElementById('nav').innerHTML=navdata;
+    })
+    .catch(error=>console.log("error"));
 </script>
 </body>
 </html>

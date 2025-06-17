@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+      background: #fff;
+      border: 1px solid #ddd;
+      width: 30%;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+      margin: 100px 0 0 600px;
+  
+    }
+
+    form div {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: large;
+      color: #444;
+    }
+
+    input, textarea {
+      font-size: medium;
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+   input:focus, textarea:focus {
+      border-color: #6a89cc;
+      box-shadow: 0 0 5px  rgba(106, 137, 204, 0.5);
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      margin-top: 20px;
+      font-size: medium;
+      background-color: orange;
+      color: #fff;
+      border: none;
+      width: 100%;
+      height: 45px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: darkorange;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }   
+    </style>
+</head>
+<body>
+    <h1><b>update</b></h1>
+         <form action="" id="form">
+        <div>
+          <label for="id">id:</label>
+          <input type="number" id="id" name="id"  placeholder="Enter id" required>
+        </div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name"  placeholder="Enter product name" required>
+        </div>
+         <div>
+          <label for="description">Description:</label>
+          <textarea id="description" rows="3" name="description" placeholder="Enter product description"></textarea>
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" placeholder="Enter product price" required>
+        </div>
+         <div>
+          <label for="">image url:</label>
+             <input type="text" id="image"  name="image_url" required>
+        </div>
+        <div>
+        <label for="">CATOGORIES:</label>
+             <input type="text" id="category"  name="category" required>
+        </div>
+        <button type="submit" onclick="update()">edit Product</button>
+      </form>
+    <script>
+         
+         async function editdata(id,new_data){
+            try{
+                const putapi=await fetch(`http://127.0.0.1:8000/updatepro/${id}`,{
+                    method:"PUT",
+                     headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(new_data),
+                });
+                const result=await putapi.json();
+                if(putapi.ok){
+                    alert(result.message);
+                    location.reload(); 
+                }else{
+                     alert("Update failed: " + result.detail);
+                }
+            }catch(error){
+                console.error("Error updating employee:", error);
+            }
+        }
+          let form=document.getElementById("form");
+        function update(){
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+             const id=document.getElementById('id').value;
+            const new_name=document.getElementById('name').value;
+            const new_description=document.getElementById('description').value;
+            const new_price=document.getElementById('price').value;
+            const new_image=document.getElementById('image').value;
+            const new_cat=document.getElementById('category').value;
+            const updatedata={
+                name:new_name,
+                description:new_description,
+                price:new_price,
+                image_url:new_image,
+                category:new_cat,
+            }
+            editdata(id,updatedata)
+        })        
+    }
+    </script>
+</body>
+</html>

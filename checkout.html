@@ -5,74 +5,288 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .main{
-            border: 1px solid black;
-            height: 80vh;
-            width: 99%;
-            display: flex;
-            padding: 10px;
-        }
-        .prodisplay{
-            border: 1px solid black;
-            height: 100%;
-            width: 70%;
-        }
-        .info{
-            border: 1px solid black;
-            height: 100%;
-            width: 30%;
-        }
-        .product{
-            border: 1px solid black;
-            height: 70%;
-            width: 100%;
-        }
-        .name{
-            width: 100%;
-            height: 8%;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-        .total{
-            border: 1px solid black;
-            height: 30%;
-            width: 100%;
-        }
-        .info{
-            border: 1px solid black;
-            width: 30%;
-            height: 100%;
-            padding: 10px;
-            background-color: rgb(226, 226, 226);
-        }
+
+       .main{
+        border: 1px solid black;
+        width: 98vw;
+        height: 89vh;
+        margin: 25px 0 0 10px;
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+       }
+       .form{
+        border: 1px solid black;
+        height: 100%;
+        width: 60%;
+       }
+       .payment{
+        height: 120px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+       }
+       .payment div{
+        border: 1px solid black;
+        height: 70%;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+       }
+       .payment div button{
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+       }
+       .billing{
+          border: 1px solid black;
+        width: 100%;
+        height: 35%;
+       }
+       .billing form{
+        
+        width: 100%;
+        height: 87%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 20px;
+       }
+       .billing form div{
+        height: 36%;
+        width: 46%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 0 0 0 20px;  
+       }
+       .selected {
+  background-color: rgb(72, 72, 255);
+  color: white;
+}                    
+       form input{
+        padding: 10px;
+        width: 90%;
+        height: 40px;
+        border: none;
+        background-color: hsla(0, 0%, 0%, 0.101);
+        border-radius: 8px;
+       }
+.cardinfo {
+  border: 1px solid black;
+  width: 100%;
+  height: 38%;
+}
+.cardinfo form {
+  width: 100%;
+  height: 87%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+}
+.cardinfo form div {
+  height: 36%;
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 0 0 20px;
+}
+.summary {
+  width: 35%;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid black;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-family: sans-serif;
+}
+
+.summary h2 {
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.summary-desc {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.plan-box {
+  background-color: #f5f5ff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+
+.price-details {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 18px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.proceed-btn {
+  background-color: rgb(39, 219, 39);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: gray;
+  line-height: 1.4;
+}
+.info,.product{
+  
+    display: flex;
+    justify-content: space-between;  
+}
+
+
     </style>
-</head>
+</head> 
 <body>
     <div id="nav"></div>
-    <h1 style="padding: 20px;">shoping cart</h1>
     <div class="main">
-        <div class="prodisplay">
-            <div class="product">
-                <div class="name">
-                    <p style="margin: 0 200px 0 0;">Product</p>
-                    <p>Size</p>
-                    <p>Quantity</p>
-                    <p>Total prize</p>
-                </div>
-                <div class="display">
-                    <hr>
+        <div class="form">
+            <div class="head">
+                <h1 style="font-weight: 100;">Checkout</h1>
+                <h4 style="margin: 10px;">choose a method for payment</h4>
+                <div class="payment">
+                    <div id="card">
+                        <button style="margin: 0 0 0 15px;border: none;" id="b1"></button>
+                        <i style="margin: 0 0 0 15px;font-size: xx-large;" class="fa-brands fa-cc-visa"></i>
+                        <p style="margin: 0 0 0 15px;font-size: larger;">credit card</p>
+                    </div>
+                    <div id="gpay">
+                        <button id="b2" style="margin: 0 0 0 15px;border: none;"></button>
+                        <i style="margin: 0 0 0 15px;font-size: xx-large;background-color: rgb(240, 240, 240);width: 50px;text-align: center;" class="fa-brands fa-google-pay"></i>
+                        <p style="margin: 0 0 0 15px; font-size: larger;" >google pay</p>
+                    </div>
                 </div>
             </div>
-            <div class="total"></div>
+            <div class="billing">
+                <h1 style="font-weight: 100; font-size: 30px;margin-top: 10px;">Billing details</h1>
+                <form class="form1" action="">
+                    <div>
+                        <label for="">E-mail</label>
+                        <input type="text" required>
+                    </div>
+                    <div><label for="">password</label>
+                        <input type="text" required>
+                    </div>
+                    <div><label for="">country</label>
+                        <input type="text" required>
+                    </div>
+                    <div><label for="">BILLING ZIP/POSTAL CODE:</label>
+                        <input type="text" required>
+                    </div>
+                </form>
+            </div>
+            <div class="cardinfo">
+                <h1 style="font-weight: 100; font-size: 30px;margin-top: 10px;">Credit Card Info</h1>
+                <form class="form2" action="">
+                    <div>
+                    <label for="">CARD NUMBER</label>
+                    <input type="text" required placeholder="7465 8374 5837 5067">
+                    </div>
+                    <div>
+                    <label for="">NAME</label>
+                    <input type="text" required placeholder="John Doe">
+                    </div>
+                    <div>
+                    <label for="">EXP. DATE</label>
+                    <input type="text" required placeholder="MM/YY">
+                    </div>
+                    <div>
+                    <label for="">CVV</label>
+                    <input type="text" required placeholder="965">
+                    </div>
+                </form>
+            </div>
+
+            
         </div>
-        <div class="info">
-            <h1>payment info</h1>
-            <p>payment method</p>
-            <p>name on card</p>
+        <div class="summary">
+            <h2>Order Summary</h2>
+                <p class="summary-desc">It can help you manage and service orders before,<br> during and after fulfilment.</p>
+
+        <div class="plan-box">
+                    <div class="info">
+                    <p sty>name</p>        
+                    <p>price</p>
+                    </div>
+                    <div class="product">
+                        <p>name</p>
+                        <p>price</p>
+                    </div>
+                </div>
+                <div class="price-details">
+                    <div class="row"><p>Subtotal</p><p>$85.99</p></div>
+                    <div class="row"><p>Tax</p><p>$4.99</p></div>
+                    <div class="row total"><p>Total</p><p>$90.98</p></div>
+                </div>
+
+                <button class="proceed-btn">Proceed with Payment</button>
+                <p class="terms-text">
+                    By continuing, you accept to our <a href="#">Terms of Services</a> and <a href="#">Privacy Policy</a>.<br>
+                    Please note that payments are non-refundable.
+                </p>
         </div>
     </div>
 <script>
+    let card=document.getElementById("card");
+     let gpay=document.getElementById("gpay");
+    let b1=document.getElementById("b1")
+    let b2=document.getElementById("b2")
+    card.addEventListener("click", () => {
+         if(b1.classList.contains("selected")){
+    b1.classList.remove("selected");
+    return;
+  }
+  b1.classList.add("selected");
+  b2.classList.remove("selected");
+  
+});
+
+gpay.addEventListener("click", () => {
+     if(b2.classList.contains("selected")){
+    b2.classList.remove("selected");
+    return;
+  }
+  b2.classList.add("selected");
+  b1.classList.remove("selected");
+}); 
+
+// fetch("http://127.0.0.1:8000/getcart")
+// .then(Response=>Response.json())
+// .then(product=>{
+//     let   
+// })
 
       fetch('navbar.html')
         .then(Response=>Response.text())

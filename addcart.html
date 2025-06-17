@@ -1,174 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .main{
-            border: 1px solid black ;
-            display: flex;
-            justify-content: space-between;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        #container{
-        border: 1px solid black;
-        width: 70vw;
-        height: 100%; 
-        flex-wrap:wrap;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add to Cart</title>
+  <style>
        
+
+    body {
+      background-color: #f7f7f7;
     }
+
+    .main {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100vw;
+      height: 70vh;
+      padding: 20px;
+    }
+
+    #container {
     
-    .summary{
-        border: 1px solid black;
-        width: 25vw;
-        height: 45%;
-        
+      display: flex;
+      flex-direction: column;  
+      gap: 20px;
+      width: 70%;
+      padding: 10px;
+      overflow-y: auto;
     }
-   
-    .card{
-        display: flex;
-        justify-content: space-evenly;
-        margin-top: 10px;
-        border: 1px solid black;
-        width: 100%;
-        border-radius: 20px;
-        align-items: center;
+
+    .summary {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 25%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      height: fit-content;
     }
-.card .div{
-    border-radius: 0 0 20px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    height:50%;
-    text-align: center;
-    
-}
-.card .div .bt{
-    border: none;
-    color: aliceblue;
-    background-color: orange;
-    margin-top: 29px;
-    border-radius:0 0 20px 20px;
-    width: 100%;
-    height: 30px;
-}
-.quantity{
-border: 1px solid black;
-    width: 40%;
-    height:10%;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-}
-.quantity button{
-    height: 20px;
-    width: 30px;
+
+    .summary h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .summary div {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      width: 100%;
+      height: 130px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.01);
+    }
+
+   .div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex: 2;
 }
 
-    </style>
+.div img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.indiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.summary-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.summary-footer button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.summary-footer button:hover {
+  background-color: #388e3c;
+}
+
+.summary-footer p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+    .div h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .div p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity button {
+      height: 30px;
+      width: 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9800;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .price {
+      margin: 0 20px;
+      font-size: 18px;
+      color: green;
+    }
+
+    .bt {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .bt:hover {
+      background-color: darkred;
+    }
+    .morepro{
+      border: 1px solid black;
+      width: 100vw;
+      height: 59vh;
+      display:flex;
+      overflow-x: auto;
+    }
+    .card2{
+      border: 1px solid black;
+      width: 24%;
+      height: 100%;
+
+    }
+  </style>
 </head>
 <body>
-    <div class="main">
-        <div id="container"></div>
-        <div class="summary">
-            <h1 style="text-align: center;">Summary</h1>
-                <div style="display: flex;justify-content:space-evenly ;"><h3>estimated amount:</h3><h3 id="esamount">0</h3>
-            </div>
-            <div style="display: flex;justify-content:space-evenly ;"><h3>Discount:</h3><h3 id="damount">0</h3></div>
-            <div style="display: flex;justify-content:space-evenly ;"><h3>Delevery charge:</h3><h3 id="delivery">0</h3></div>
-            <div style="display: flex;justify-content:space-evenly ;"><h3>GST:</h3><h3 id="gst">0</h3></div>
-            <div style="display: flex;justify-content:space-evenly ;"><h3>Final price:</h3><h3 id="famount">0</h3></div>
-        </div>
-    </div>
-    <script>
-function product(){
-const product=JSON.parse(localStorage.getItem('addtocart'))||[];
-const container=document.getElementById("container");
-container.innerHTML="";
+  <div id="nav"></div>
+      <h1 style="padding: 20px;">Shopping cart</h1>
+  <div class="main">
+    <div id="container"></div>
 
-product.forEach(pro => {
-    let card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`    
-    <div class="div">
-    <h1>${pro.name}</h1>
-    <p> ${pro.detail}</p>
+    <div class="summary">
+      <h1>Summary</h1>
+      <div><span>Estimated amount:</span><span id="esamount">0</span></div>
+      <div><span>Discount:</span><span id="damount">0</span></div>
+      <div><span>Delivery charge:</span><span id="delivery">0</span></div>
+      <div><span>GST:</span><span id="gst">0</span></div>
+      <div><strong>Final price:</strong><strong id="famount">0</strong></div>
+      
+      <div class="summary-footer">
+    <button>Checkout</button>
+  </div>
     </div>
-    <div class="quantity">
-   <button class="p" id="bt" onclick="plus(${pro.id})">+</button>
-    <p id="num-${pro.id}">1</p>
-    <button class="m"id="bt" onclick="minus(${pro.id})">-</button>
-    </div>
-    <div class="price">
-        <h2 id="price-${pro.id}">${pro.price}</h2>
-    </div>
-    <button class="bt"id="editbt">delete</button> 
-    `;
-container.appendChild(card);
-});
-}
+  </div>
+  <h3 style="margin:0 0 0 10px;">for you:</h3>
+  <div class="morepro">
+    <div class="card2"></div>
+  </div>
+  <script>
+    
+    async function loadcart() {
+     try{
+      const response= await fetch("http://127.0.0.1:8000/cart");
+      if(!response.ok){
+        throw new Error(`server error ${response.status}`);
+      }
+      const cartitems=await response.json();
+      
+      const container = document.getElementById("container");
+      container.innerHTML = "";
+      if(cartitems.length===0){
+       let banner= document.createElement("h2");
+       banner.innerHTML="Your cart is empty...";
+       container.appendChild(banner);
+       return;
+      }
+      let estimatedAmount=0;
+      cartitems.forEach((pro) => {
+        let card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="div">
+            <img src="" alt="${pro.name}">  
+            <div class="indiv">  
+            <h1>${pro.name}</h1>
+            ${pro.size ? `<div class="size"><strong>Size: ${pro.size}</strong></div>` : ""} 
+            <p>${pro.description}</p>
+          </div>
+          </div>
+          <div class="quantity">
+            <button onclick="plus(${pro.product_id})">+</button>
+            <p id="num-${pro.product_id}">${pro.quantity}</p>
+            <button onclick="minus(${pro.product_id})">-</button>
+          </div>
+          <div class="price">
+            ₹<span id="price-${pro.product_id}">${pro.price * pro.quantity}</span>
+          </div>
+          <button class="bt" onclick="deleteItem(${pro.product_id})">Delete</button>
+        `;
+        container.appendChild(card);
+          estimatedAmount += pro.price * pro.quantity;
+      });
+      document.getElementById("esamount").innerText=estimatedAmount;
+       // (If you apply any discount, GST, or delivery charge logic, compute here)
+        document.getElementById('damount').innerText = 0;      // placeholder
+        document.getElementById('delivery').innerText = 0;    // placeholder
+        const gst = Math.round(estimatedAmount * 0.18);       // e.g. 18% GST
+        document.getElementById('gst').innerText = gst;
+        document.getElementById('famount').innerText = estimatedAmount + gst;
+    }catch (error) {
+        console.error('Failed to load cart items:', error);
+      }
+  }
 
-function plus(id){
-    let cart=JSON.parse(localStorage.getItem('addtocart'))||[];    
-    let find=cart.find(pro => pro.id==id);
-    let p=1;
-    if(find){
-        let displayp=document.querySelector(`#price-${id}`);
-        let ptext=Number(displayp.innerText);
-        let numElement = document.querySelector(`#num-${id}`);
-        let price=Number(find.price);
-        let val = Number(numElement.innerText);
-    if(val>=1){
-        val+=1;
-        p=price*val;
+  async function deleteItem(id){
+    try{
+    const res= await fetch(`http://127.0.0.1:8000/delete_cart_item/${id}`,{
+      method:'DELETE'
+    });
+    const result=await res.json();
+    if(res.ok){
+      alert(result.message);
+      loadcart();
+    }else{
+      alert(`delete failed:${result.detail}`);
     }
-    numElement.innerHTML=val;
-    displayp.innerHTML=p;
-}
-let es=document.getElementById('esamount');
-let discount=document.getElementById('damount');
-let delivery=document.getElementById('delivery');
-let gst=document.getElementById('gst');
-let Final=document.getElementById('famount');
-cart.forEach(proo=>{   
-nes+=Number(proo.price);
-})
-es.innerHTML=nes;
-}
-
-
-function minus(id){
-    let cart=JSON.parse(localStorage.getItem('addtocart'))||[];    
-    let find=cart.find(pro => pro.id==id);
-    let p=find.price;
-    if(find){
-        let displayp=document.querySelector(`#price-${id}`);
-        let ptext=Number(displayp.innerText);
-        let price=Number(find.price);
-        let numElement = document.querySelector(`#num-${id}`);
-        let val = Number(numElement.innerText);
-    if(val>1){
-        val-=1;
-        p=price*val;
+    }catch(error){
+      console.error('Error deleting from cart:',error);
     }
-    numElement.innerHTML=val;
-    displayp.innerHTML=p;
-}
-let es=document.getElementById('esamount');
-let discount=document.getElementById('damount');
-let delivery=document.getElementById('delivery');
-let gst=document.getElementById('gst');
-let Final=document.getElementById('famount');
-;
-cart.forEach(proo=>{    
-nes-=Number(proo.price);
-})
-es.innerHTML=nes;
-}
+  }
 
 
-product();
-    </script>
+
+  async function updateq(id,qty) {
+    try{
+    const res=await fetch("http://127.0.0.1:8000/update_quantity",{
+      method:"PUT",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        product_id:id,
+        quantity:qty
+      })
+    });
+    const result=await res.json();
+    if(res.ok){ 
+      loadcart()
+    }else{
+      alert(`failed:${result.detail}`);
+    }
+  }catch(err){
+    console.error("error occured:",err);
+  }
+}
+  function plus(id){
+    let qty=document.getElementById(`num-${id}`);
+    let num=parseInt(qty.innerText);
+    num+=1;
+    updateq(id,num);
+  }
+  function minus(id){
+    let qty=document.getElementById(`num-${id}`);
+    let num=parseInt(qty.innerText);
+    if(num>1){
+      num--;
+      updateq(id,num);
+    }
+  }
+
+    window.onload = loadcart;
+    
+      fetch('navbar.html')
+        .then(Response=>Response.text())
+        .then(navdata=>{    
+            document.getElementById('nav').innerHTML=navdata;
+        })
+        .catch(error=>console.log("error"));
+  </script>
 </body>
 </html>

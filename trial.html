@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Test</title>
+</head>
+<body>
+  <div class="nav-search">
+    <i class="fa fa-search"></i>
+    <input type="text" id="input" placeholder="Search">
+  </div>
+
+  <script>
+    document.getElementById("input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        alert("Enter was pressed. Value: " + e.target.value);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>delete</h1>
+    <p>enter id:</p>
+    <input type="number" name="id" id="id" required>
+    <button onclick="deletepro()">confirm</button>
+<script>
+function deletepro(){
+    let id=document.getElementById("id").value;
+        fetch(`http://127.0.0.1:8000/deletepro/${id}`,{
+            method:"DELETE"
+        })
+        .then(Response=>Response.json())
+        .then(result=>{
+            alert(result.message);
+            location.reload();
+        })
+       .catch(error=>{
+        console.error("Error updating employee:", error);
+    });
+}
+</script>
+</body>
+</html>

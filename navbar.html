@@ -8,21 +8,22 @@
   <link rel="stylesheet" href="nav.css">
 </head>
 <body>
+  <div class="navbar-wrapper">
   <nav class="navbar">
     <div class="nav-logo">
       <h1>STYLE</h1>
     </div>
     <ul class="nav-links">
       <li><a href="index.html">home</a></li>
-      <li><a href="add.html">men</a></li>
-      <li><a href="#">women</a></li>
-      <li><a href="#">accesories</a></li>
-      <li><a href="add.html">kids</a></li>
+      <li><a href="prodisplay.html?category=men">men</a></li>
+      <li><a href="prodisplay.html?category=women">women</a></li>
+      <li><a href="prodisplay.html?category=accesories">accesories</a></li>
+      <li><a href="prodisplay.html?category=kids">kids</a></li>
     </ul>
 <div class="nav-right">
       <div class="nav-search">
         <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search">
+        <input type="text" id="input" placeholder="Search">
       </div>
       <a href="#" class="icon-button"><button>Sign Up</button></a>
       <a href="addcart.html" class="icon-button">
@@ -30,5 +31,31 @@
       </a>
 </div>
   </nav>
+  </div>
+  <script>
+   
+    document.getElementById("input").addEventListener("keydown",function (e){ //keypress is used when there is no bt but plain input field if u type and enter the value will be read
+  console.log("clickrd")
+      if (e.key === "Enter") {
+      const input = e.target.value.trim().toLowerCase();                          // e.target.value → "   mens jeans   ",e.target.value.trim() → "mens jeans"
+    const words = input.split(" ");
+    const categories = ['men', 'women', 'kids', 'accesories'];
+    const products = ['jeans', 'shirt', 't-shirt', 'watch', 'shoes'];
+
+    let foundcat = words.find(w => categories.includes(w));
+    let foundpro = words.find(w => products.includes(w));
+
+    let url = "prodisplay.html";
+    const queryParams = [];
+    if (foundcat) queryParams.push(`category=${foundcat}`);
+    if (foundpro) queryParams.push(`name=${foundpro}`);
+    if (queryParams.length > 0) {
+      url += "?" + queryParams.join("&");
+    }
+
+    window.location.href = url; 
+  }
+});
+</script>
 </body>
 </html>
